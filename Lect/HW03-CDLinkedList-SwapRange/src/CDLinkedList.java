@@ -165,24 +165,53 @@ public class CDLinkedList {
 			return;
 		}
 		
+//		This one is a bit cheating, may confused you, but it works!
+		
+//		DListIterator is1 = (DListIterator) s1;
+//		DListIterator if1 = (DListIterator) f1;
+//		DListIterator is2 = (DListIterator) s2;
+//		DListIterator if2 = (DListIterator) f2;
+//		
+
+//		DListIterator p1 = new DListIterator (((DListIterator)s2).currentNode.previousNode) ;
+//		DListIterator p2 = new DListIterator (((DListIterator)f2).currentNode.nextNode);
+//		
+//		is1.currentNode.previousNode.nextNode = is2.currentNode;
+//		p1.currentNode.nextNode = is1.currentNode;
+//		if2.currentNode.nextNode = if1.currentNode.nextNode;
+//		if1.currentNode.nextNode = p2.currentNode;	
+		
+
+//		Instead, this one is more straightforward!
 		DListIterator is1 = (DListIterator) s1;
 		DListIterator if1 = (DListIterator) f1;
 		DListIterator is2 = (DListIterator) s2;
 		DListIterator if2 = (DListIterator) f2;
 		
-		DListIterator p1 = new DListIterator (((DListIterator)s2).currentNode.previousNode) ;
-		DListIterator p2 = new DListIterator (((DListIterator)f2).currentNode.nextNode);
+		//p and n for previous and next
+		DListIterator p1 = new DListIterator (is1.currentNode.previousNode);
+		DListIterator n1 = new DListIterator (if1.currentNode.nextNode);
+		DListIterator p2 = new DListIterator (is2.currentNode.previousNode);
+		DListIterator n2 = new DListIterator (if2.currentNode.nextNode);
 		
-		is1.currentNode.previousNode.nextNode = is2.currentNode;
-		p1.currentNode.nextNode = is1.currentNode;
-		if2.currentNode.nextNode = if1.currentNode.nextNode;
-		if1.currentNode.nextNode = p2.currentNode;	
-		
-//		work something like this but need 2 more iterators or it will be an error
-//		is1.currentNode.previousNode.nextNode = is2.currentNode;
-//		is2.currentNode.previousNode.nextNode = is1.currentNode;
-//		if2.currentNode.nextNode = if1.currentNode.nextNode;
-//		if1.currentNode.nextNode = if2.currentNode.nextNode;	
-		
+		if(n1.currentNode!=p2.currentNode) {
+			n1.currentNode.previousNode = if2.currentNode;
+			n2.currentNode.previousNode = if1.currentNode;
+			is1.currentNode.previousNode = p2.currentNode;
+			is2.currentNode.previousNode = p1.currentNode;
+			
+			p1.currentNode.nextNode = is2.currentNode;
+			p2.currentNode.nextNode = is1.currentNode;
+			if1.currentNode.nextNode = n2.currentNode;
+			if2.currentNode.nextNode = n1.currentNode;
+		} else {
+			n2.currentNode.previousNode = if1.currentNode;
+			is1.currentNode.previousNode = if2.currentNode;
+			is2.currentNode.previousNode = p1.currentNode;
+			
+			p1.currentNode.nextNode = is2.currentNode;
+			if1.currentNode.nextNode = n2.currentNode;
+			if2.currentNode.nextNode = is1.currentNode;
+		}
 	}
 }
