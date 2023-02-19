@@ -194,7 +194,7 @@ public class CDLinkedList {
 		DListIterator p2 = new DListIterator (is2.currentNode.previousNode);
 		DListIterator n2 = new DListIterator (if2.currentNode.nextNode);
 		
-		if(n1.currentNode!=p2.currentNode) {
+		if(!(n1.currentNode == is2.currentNode || p2.currentNode == if1.currentNode)) {
 			n1.currentNode.previousNode = if2.currentNode;
 			n2.currentNode.previousNode = if1.currentNode;
 			is1.currentNode.previousNode = p2.currentNode;
