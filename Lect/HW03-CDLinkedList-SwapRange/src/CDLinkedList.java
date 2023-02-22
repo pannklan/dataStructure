@@ -172,7 +172,6 @@ public class CDLinkedList {
 //		DListIterator is2 = (DListIterator) s2;
 //		DListIterator if2 = (DListIterator) f2;
 //		
-
 //		DListIterator p1 = new DListIterator (((DListIterator)s2).currentNode.previousNode) ;
 //		DListIterator p2 = new DListIterator (((DListIterator)f2).currentNode.nextNode);
 //		
@@ -180,7 +179,6 @@ public class CDLinkedList {
 //		p1.currentNode.nextNode = is1.currentNode;
 //		if2.currentNode.nextNode = if1.currentNode.nextNode;
 //		if1.currentNode.nextNode = p2.currentNode;	
-		
 
 //		Instead, this one is more straightforward!
 		DListIterator is1 = (DListIterator) s1;
