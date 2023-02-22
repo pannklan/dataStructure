@@ -23,7 +23,9 @@ public class PriorityQueue {
 	        q.insertLast(q.removeFirst());
 	        i++;
 	    }
+	}
 	    //this stuck in forever loop
+//	public void push(int x) throws Exception {
 //	    if (q.isEmpty()) {
 //			q.insertLast(x);
 //			return;
@@ -37,7 +39,7 @@ public class PriorityQueue {
 //			q.insertLast(q.removeFirst());
 //		}
 //		return;		
-	}
+//	}
 
 	// implement this.
 	public void pop() throws Exception {
